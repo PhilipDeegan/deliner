@@ -56,10 +56,11 @@ class Pattern{
 }
 
 int main(int argc, char* argv[]) {
+    kul::Signal sig;
+
     const char* DIR = "dir";
     const char* FILE = "file";
     const char* PATTERN = "patter";
-
     try{
         using namespace kul::cli;
 
@@ -183,33 +184,7 @@ int main(int argc, char* argv[]) {
             }
         }
     }
-    catch(const kul::Exit& e){ if(e.code() != 0) KERR << e.stack(); return e.code(); }
-    catch(const kul::proc::ExitException& e){ KERR << e.stack(); return 1;}
     catch(const kul::Exception& e){ KERR << e.stack(); return 2;}
     catch(const std::exception& e){ KERR << e.what(); return 3;}
     return 0;
 }
-
-
-
-// void maiken::Application::trim(const kul::File& f){
-//     kul::File tmp(f.real()+".tmp");
-//     {
-//         kul::io::Writer w(tmp);
-//         kul::io::Reader r(f);
-//         const std::string* l = r.readLine();
-//         if(l){
-//             std::string s = *l;
-//             while(s.size() && (s[s.size() - 1] == ' ' || s[s.size() - 1] == '\t')) s.pop_back();
-//             w << s.c_str();
-//             while((l = r.readLine())){
-//                 w << kul::os::EOL();
-//                 s = *l;
-//                 while(s.size() && (s[s.size() - 1] == ' ' || s[s.size() - 1] == '\t')) s.pop_back();
-//                 w << s.c_str();
-//             }
-//         }
-//     }
-//     f.rm();
-//     tmp.mv(f);
-// }
