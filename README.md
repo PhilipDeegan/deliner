@@ -1,6 +1,8 @@
 
 # deliner
 
+## C++14 File text remover
+
 **Cleanly remove text from files** 
 
 ## Purpose.
@@ -27,7 +29,7 @@
 
     i.e
 
-    
+
     #! -r -f cpp,hpp 
 
     <PATTERN>
