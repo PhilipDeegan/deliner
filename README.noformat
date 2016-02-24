@@ -2,8 +2,6 @@ deliner
 
 Cleanly remove text from files
 
-First line is not subject to patters.
-
 conf
 
 .deliner
@@ -19,14 +17,10 @@ i.e
 KLOG(INF)*;
 """"""""""""""""""""""""
 
-Each line by default is a pattern to remove
+Each line not starting with "#" is a pattern to remove
 
 Purpose.
-
-Debug vs release candidates.
-
-debug becomes release by running 
-
+	Debug vs release candidates. 
 
 Arguments:
 	-r 					- recurse 
@@ -38,3 +32,4 @@ Rules:
 	Pattern cannot have more than one *
 	Pattern cannot end with *
 	Pattern cannot start with *
+	First line of files is not subject to patterns.
