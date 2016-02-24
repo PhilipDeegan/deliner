@@ -18,9 +18,9 @@
     Pattern cannot start with *
     First line of files is not subject to patterns.
 
-## conf
+## Configuration
 
-    .deliner
+    File: .deliner
 
     first line if starts with "#! " is default command if no arguments are provided
     Each line not starting with "#" is a pattern to remove
