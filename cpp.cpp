@@ -60,7 +60,8 @@ int main(int argc, char* argv[]) {
 
     const char* DIR = "dir";
     const char* FILE = "file";
-    const char* PATTERN = "patter";
+    const char* PATTERN = "pattern";
+    const char* RECURSE = "recurse";
     try{
         using namespace kul::cli;
 
@@ -78,7 +79,6 @@ int main(int argc, char* argv[]) {
             KERR << e.stack();
             KEXIT(0, "");
         }
-
         if(args.has(DIR)) {
             kul::Dir d(args.get(DIR));
             if(!d) KEXCEPT(deliner::Exception, "Directory does not exist: " + d.path());
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]) {
             if(p.str()[p.str().size() - 1] == '*') KEXCEPT(deliner::Exception, "Pattern may not end with *");
             if(std::count(p.str().begin(), p.str().end(), '*') > 1) KEXCEPT(deliner::Exception, "Pattern may not contains more than one *");
         }
-        for(const auto file : conf.dir().files(1)){
+        for(const auto file : conf.dir().files(args.has(RECURSE))){
             const std::string f = file.name();
             if(f.rfind('.') != std::string::npos){
                 const std::string& ft(f.substr(f.rfind('.') + 1));
