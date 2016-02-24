@@ -1,0 +1,3 @@
+#! -r -f cpp,hpp 
+
+KLOG(INF)*;

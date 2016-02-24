@@ -1,0 +1,40 @@
+deliner
+
+Cleanly remove text files
+
+First line is not subject to patters.
+
+conf
+
+.deliner
+
+first line if starts with "#! " is default command if no arguments are provided
+
+i.e
+
+""""""""""""""""""""""""
+#! -r -f cpp,hpp 
+
+<PATTERN>
+KLOG(INF)*;
+""""""""""""""""""""""""
+
+Each line by default is a pattern to remove
+
+Purpose.
+
+Debug vs release candidates.
+
+debug becomes release by running 
+
+
+Arguments:
+	-r 					- recurse 
+	-f <file-types>	 	- File types to check
+	-p <pattern>        - single pattern to run (additional to .deliner file)
+	-d <directory>      - directory other than CWD to execute on
+
+Rules:
+	Pattern cannot have more than one *
+	Pattern cannot end with *
+	Pattern cannot start with *

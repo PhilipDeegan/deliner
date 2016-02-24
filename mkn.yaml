@@ -1,0 +1,8 @@
+#! clean build -tKa "-Os" -l -pthread
+
+name: deliner
+
+dep: 
+  - name: mkn.kul
+    version: master
+main: cpp.cpp
