@@ -20,16 +20,16 @@ KLOG(INF)*;
 Each line not starting with "#" is a pattern to remove
 
 Purpose.
-	Debug vs release candidates. 
+    Debug vs release candidates. 
 
 Arguments:
-	-r 					- recurse 
-	-f <file-types>	 	- File types to check
-	-p <pattern>        - single pattern to run (additional to .deliner file)
-	-d <directory>      - directory other than CWD to execute on
+    -r                  - recurse 
+    -f <file-types>     - File types to check
+    -p <pattern>        - single pattern to run (additional to .deliner file)
+    -d <directory>      - directory other than CWD to execute on
 
 Rules:
-	Pattern cannot have more than one *
-	Pattern cannot end with *
-	Pattern cannot start with *
-	First line of files is not subject to patterns.
+    Pattern cannot have more than one *
+    Pattern cannot end with *
+    Pattern cannot start with *
+    First line of files is not subject to patterns.
