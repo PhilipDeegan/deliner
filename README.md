@@ -20,18 +20,16 @@
 
 ## conf
 
-.deliner
+    .deliner
 
-first line if starts with "#! " is default command if no arguments are provided
-Each line not starting with "#" is a pattern to remove
+    first line if starts with "#! " is default command if no arguments are provided
+    Each line not starting with "#" is a pattern to remove
 
-i.e
+    i.e
 
-""""""""""""""""""""""""
-#! -r -f cpp,hpp 
+    """"""""""""""""""""""""
+    #! -r -f cpp,hpp 
 
-<PATTERN>
-KLOG(INF)*;
-""""""""""""""""""""""""
-
-
+    <PATTERN>
+    KLOG(INF)*;
+    """"""""""""""""""""""""
