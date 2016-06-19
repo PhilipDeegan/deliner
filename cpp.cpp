@@ -87,9 +87,10 @@ int main(int argc, char* argv[]) {
         kul::File conf(".deliner");
         if(conf && (args.empty() || (args.size() == 1 && args.has(DIR)))){
             kul::io::Reader reader(conf);
-            const std::string* s = reader.readLine();
-            if(s && s->substr(0, 3) == "#! "){
-                std::string line(s->substr(3));
+            const char* c = reader.readLine();
+            std::string s = c ? c : "";
+            if(s.substr(0, 3) == "#! "){
+                std::string line(s.substr(3));
                 if(!line.empty()){
                     std::vector<std::string> lineArgs(kul::cli::asArgs(line));
                     std::vector<char*> lineV;
@@ -100,7 +101,7 @@ int main(int argc, char* argv[]) {
         }
         std::vector<std::string> types;
         if(!args.has(FILE)) KEXCEPT(deliner::Exception, "No file type specified e.g. -f cpp,hpp");
-        kul::String::split(args.get(FILE), ',', types);
+        kul::String::SPLIT(args.get(FILE), ',', types);
         kul::hash::set::String fts;
         for(const auto& s : types) fts.insert(s);
 
@@ -108,11 +109,11 @@ int main(int argc, char* argv[]) {
         if(args.has(PATTERN)) pats.push_back(deliner::Pattern(args.get(PATTERN)));
         if(conf){
             kul::io::Reader r(conf);
-            const std::string* l = 0;
+            const char* l = 0;
             while((l = r.readLine())){
-                if(l->size() == 0) continue;
-                if((*l)[0] == '#') continue;
-                pats.push_back(deliner::Pattern(*l));
+                if(!strlen(l)) continue;
+                if(l[0] == '#') continue;
+                pats.push_back(deliner::Pattern(std::string(l)));
             }
         }
         for(const auto& p : pats){ 
@@ -130,19 +131,19 @@ int main(int argc, char* argv[]) {
                     kul::io::Reader r(file);
                     std::stringstream ss;
                     bool y = 1;
-                    const std::string* l = r.readLine();
+                    const char* l = r.readLine();
                     const deliner::Pattern* pat = 0;
                     if(l){
                         w << *l;
                         while((l = r.readLine())){
-                            if(l->size() == 0){
+                            if(!strlen(l)){
                                 w << kul::os::EOL();
                                 continue;
                             } 
                             y = 1;
                             ss << *l;
-                            std::string tr(*l);
-                            kul::String::trim(tr);
+                            std::string tr(l);
+                            kul::String::TRIM(tr);
                             if(pat){
                                 ss.str(std::string());
                                 w << kul::os::EOL();
