@@ -4,5 +4,5 @@ name: deliner
 
 dep: 
   - name: mkn.kul
-    version: 21062016
+    version: master
 main: cpp.cpp
