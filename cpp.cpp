@@ -57,7 +57,6 @@ class Pattern{
 
 int main(int argc, char* argv[]) {
     kul::Signal sig;
-
     const char* DIR = "dir";
     const char* FILE = "file";
     const char* PATTERN = "pattern";
@@ -134,14 +133,14 @@ int main(int argc, char* argv[]) {
                     const char* l = r.readLine();
                     const deliner::Pattern* pat = 0;
                     if(l){
-                        w << *l;
+                        w << l;
                         while((l = r.readLine())){
                             if(!strlen(l)){
                                 w << kul::os::EOL();
                                 continue;
                             } 
                             y = 1;
-                            ss << *l;
+                            ss << l;
                             std::string tr(l);
                             kul::String::TRIM(tr);
                             if(pat){
