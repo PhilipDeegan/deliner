@@ -1,8 +1,9 @@
 #! clean build -tKa "-Os" -l -pthread
 
 name: deliner
+scm: https://github.com/dekken/deliner
 
-dep: 
+dep:
   - name: mkn.kul
     version: master
 main: cpp.cpp
