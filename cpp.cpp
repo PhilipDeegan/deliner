@@ -175,6 +175,7 @@ int main(int argc, char* argv[]) {
                 ss.str(std::string());
               }
             }
+            w << kul::os::EOL();
           }
           file.rm();
           tmp.mv(file);
